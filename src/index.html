@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <!-- Include mapbox -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" rel="stylesheet" />
+    <script>
+      // Access the mapbox api for any camera controlls
+      window.onload = function () {
+        // Listen to mapbox events
+        document.getElementById('alpaca').addEventListener('mapbox', e => {
+          // Obtain mapbox
+          const mapbox = document
+            .getElementById('alpaca')
+            .getMapboxApi()
+            .then(mapbox => {
+              console.log('Mapbox', mapbox);
+            });
+        });
+      };
+    </script>
+
+    <script type="module" src="/build/web-components.esm.js"></script>
+    <script nomodule src="/build/web-components.js"></script>
+  </head>
+  <body>
+    <button
+      onmouseenter="javascript:document.getElementById('alpaca').displayIndicatedFeaturePopup('itinerary/0waD719Wll7LSZpx0uz1lV/location/6DHNPJpC98d7iaryM1Rxf3')"
+      onmouseout="javascript:document.getElementById('alpaca').removeIndicatedFeaturePopup()"
+    >
+      Hover Show Popup
+    </button>
+    <itinerary-map
+      id="alpaca"
+      style="width: 100%"
+      itinerary-id="itinerary/0waD719Wll7LSZpx0uz1lV"
+      alpaca-access-token="pk.123"
+      mapbox-access-token="pk.123"
+    />
+  </body>
+</html>
